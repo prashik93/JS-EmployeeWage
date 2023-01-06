@@ -7,7 +7,7 @@ if(empCheck == IS_ABSENT) {
 }
 console.log("UC1 - Employee is Present")
 
-// UC2 - Calculating Employee Wage
+// UC2 - Calculating Employee Wage 
 const IS_PART_TIME = 1;
 const IS_FULL_TIME = 2;
 const PART_TIME_HOURS = 4;
