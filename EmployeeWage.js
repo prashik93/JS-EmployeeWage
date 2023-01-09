@@ -34,4 +34,16 @@ while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
 }
 
 let empWage = calcDailyWage(totalEmpHrs);
-console.log("Total Days : " + totalWorkingDays + " Total Hrs : " + totalEmpHrs + " Emp Wage : " + empWage);
+console.log("UC-6 - Total Days : " + totalWorkingDays + " Total Hrs : " + totalEmpHrs + " Emp Wage : " + empWage);
+
+let totEmpWage = 0;
+function sum(dailyWage) {
+    totEmpWage += dailyWage;
+}
+empDailyWageArr.forEach(sum);
+console.log("UC-7A - Total Days : " + totalWorkingDays + " Total Hrs : " + totalEmpHrs + " Emp Wage : " + empWage);
+
+function totalWages(totalWage, dailyWage) {
+    return totalWage + dailyWage;
+}
+console.log("UC-7A - Emp Wage With Reduce : " + empDailyWageArr.reduce(totalWages, 0));
