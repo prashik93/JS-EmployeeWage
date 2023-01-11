@@ -25,6 +25,7 @@ let totalEmpHrs = 0;
 let totalWorkingDays = 0;
 let empDailyWageArr = new Array();
 let empDailyWageMap = new Map();
+let empDailyHrsMap = new Map();
 
 while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
     totalWorkingDays++;
@@ -32,8 +33,9 @@ while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
     let empHrs = getWorkingHours(empCheck);
     totalEmpHrs += empHrs;
     empDailyWageArr.push(calcDailyWage(empHrs));
-    dailyEmpWage = calcDailyWage(totalEmpHrs)
-    empDailyWageMap.set(totalWorkingDays, dailyEmpWage)
+    dailyEmpWage = calcDailyWage(totalEmpHrs);
+    empDailyHrsMap.set(totalWorkingDays, empHrs);
+    empDailyWageMap.set(totalWorkingDays, dailyEmpWage);
 }
 
 let empWage = calcDailyWage(totalEmpHrs);
@@ -93,3 +95,15 @@ empDailyWageMap.forEach (function(value, key) {
   text += key + ' = ' + value + ", ";
 })
 console.log("UC8 - Store the Day And Daily Wage Along With The Total Wage : " + text);
+
+
+// UC9 - Arrow Functions
+const findTotal = (totalVal, dailyValue) => {
+    return totalVal + dailyValue;
+}
+
+let count = 0;
+let totalHours = Array.from(empDailyHrsMap.values()).reduce(findTotal, 0);
+let totalSalary = empDailyWageArr.filter(dailyWage => dailyWage > 0).reduce(findTotal, 0);
+
+console.log("UC9-a - Emp Wage With Arrow : " + " Total Hours : " + totalHours + " Total Wages : " + totalSalary); 
