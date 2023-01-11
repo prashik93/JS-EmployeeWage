@@ -125,7 +125,7 @@ console.log("Non Working Days : " + nonWorkingDays);
 let totalEmpHours = 0;
 let totalWorkingDay = 0;
 let empDailyHrsAndWageArr = new Array();
-while((totalEmpHours <= MAX_HRS_IN_MONTH) && (totalWorkingDay <= NUM_OF_WORKING_DAYS)) {
+while((totalEmpHours <= MAX_HRS_IN_MONTH) && (totalWorkingDay < NUM_OF_WORKING_DAYS)) {
     totalWorkingDay++;
     let empCheck = Math.floor(Math.random() * 10) % 3;
     let empHrs = getWorkingHours(empCheck);
@@ -140,3 +140,13 @@ while((totalEmpHours <= MAX_HRS_IN_MONTH) && (totalWorkingDay <= NUM_OF_WORKING_
     });
 }
 console.log("UC10 - Showing Daily Hours Worked And Wage Earned : " + empDailyHrsAndWageArr);
+
+// UC11-A to UC11-D Using Object Functions along with Arrow Functions
+
+let totalWage = empDailyHrsAndWageArr
+                .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
+                .reduce((totalWage, dailyHrsAndWage) => totalWage += dailyHrsAndWage.dailyWage, 0);
+let totalHrs = empDailyHrsAndWageArr
+               .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
+               .reduce((totalHrs, dailyHrsAndWage) => totalHrs += dailyHrsAndWage.dailyHours, 0);
+console.log("UC11A - Total Hours : " + totalHrs + " Total Wages : " + totalWage);
