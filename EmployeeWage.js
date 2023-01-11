@@ -154,8 +154,14 @@ console.log("UC11A - Total Hours : " + totalHrs + " Total Wages : " + totalWage)
 process.stdout.write("UC11-B - Logging Full Work Days");
 empDailyHrsAndWageArr.filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 8)
                      .forEach(dailyHrsAndWage => process.stdout.write(dailyHrsAndWage.toString()));
+console.log();
 
 let partWorkingDayStrArr = empDailyHrsAndWageArr
                            .filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 4)
                            .map(dailyHrsAndWage => dailyHrsAndWage.toString());
 console.log("UC11C - PartWorkingDayStrings : " + partWorkingDayStrArr);
+
+let nonWorkingDayNums = empDailyHrsAndWageArr
+                        .filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 0)
+                        .map(dailyHrsAndWage => dailyHrsAndWage.dayNum);
+console.log("UC11D - NonWorkingDayNums : " + nonWorkingDayNums);
